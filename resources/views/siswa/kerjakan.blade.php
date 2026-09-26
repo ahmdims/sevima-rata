@@ -4,7 +4,7 @@
             <span class="font-medium text-ink">Hai, {{ $attempt->student_name }}!</span>
             <span class="text-muted tabular-nums">Soal {{ $number }} dari {{ $total }}</span>
         </div>
-        <x-ui.progress :value="$number - 1" :max="$total" :segments="$total" :label="'Soal '.$number.' dari '.$total" />
+        <x-ui.progress :value="$number - 1" :max="$total" :segments="$total" />
     </div>
 
     <form method="POST" action="{{ route('siswa.kerjakan.answer', $attempt) }}" x-data="{ sending: false }" @submit="sending = true">

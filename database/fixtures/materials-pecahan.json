@@ -1,0 +1,57 @@
+{
+    "0": {
+        "title": "Mengenal Pecahan dari Benda di Sekitar",
+        "concept_md": "Pecahan menunjukkan **bagian dari satu keseluruhan yang dibagi sama besar**.\n\n- Angka **bawah** (penyebut) = banyak seluruh potongan yang sama besar.\n- Angka **atas** (pembilang) = banyak potongan yang kita ambil.\n\nPenting: kita selalu membandingkan bagian yang diambil dengan **keseluruhan**, bukan dengan sisanya.",
+        "examples_md": "1. Roti dipotong **4** sama besar, Sari makan **1** → pecahannya **1/4**.\n2. Kertas dilipat menjadi **2** bagian sama besar, **1** diwarnai → pecahannya **1/2**.",
+        "exercises": [
+            {"q": "Kue dipotong 3 sama besar, kamu makan 1. Tulis pecahannya.", "answer": "1/3"},
+            {"q": "Sebuah pita dibagi 5 sama besar, 2 bagian dipakai. Tulis pecahannya.", "answer": "2/5"},
+            {"q": "Pada pecahan 3/8, angka mana yang menunjukkan banyak seluruh bagian?", "answer": "8"}
+        ],
+        "teacher_tips_md": "- Mulai dengan benda nyata: lipat kertas, potong roti/buah.\n- Minta siswa menyebut \"bagian yang diambil\" dan \"seluruh bagian\" sebelum menulis angka.\n- Hindari langsung ke simbol; pakai gambar dulu."
+    },
+    "1": {
+        "title": "Membandingkan Pecahan dengan Gambar",
+        "concept_md": "Saat **pembilangnya sama**, pecahan dengan **penyebut lebih kecil** justru **lebih besar**, karena potongannya lebih sedikit sehingga tiap potongan lebih besar.\n\nContoh: 1/3 pizza lebih besar dari 1/5 pizza.\n\nSaat **penyebutnya sama**, bandingkan pembilangnya saja: 3/4 > 1/4.",
+        "examples_md": "1. Bandingkan 1/2 dan 1/4 → gambar dua persegi sama besar, arsir → **1/2 lebih besar**.\n2. Urutkan 2/6, 5/6, 1/6 → penyebut sama, urutkan pembilang → **1/6, 2/6, 5/6**.",
+        "exercises": [
+            {"q": "Mana yang lebih besar: 1/4 atau 1/8?", "answer": "1/4"},
+            {"q": "Urutkan dari terkecil: 3/5, 1/5, 4/5", "answer": "1/5, 3/5, 4/5"},
+            {"q": "Tulis satu pecahan yang senilai dengan 1/3.", "answer": "Contoh: 2/6 atau 3/9"}
+        ],
+        "teacher_tips_md": "- Pakai strip pecahan (fraction strips) dari kertas dengan panjang sama.\n- Tanyakan: \"Kalau pizza dibagi ke lebih banyak orang, potonganmu makin besar atau kecil?\"\n- Luruskan miskonsepsi \"angka besar = pecahan besar\" dengan gambar berdampingan."
+    },
+    "2": {
+        "title": "Menjumlah Pecahan Berpenyebut Sama",
+        "concept_md": "Jika penyebutnya **sama**, potongannya berukuran sama. Jadi cukup **jumlahkan pembilangnya**, sedangkan **penyebut tetap**.\n\n1/5 + 2/5 = **3/5** (bukan 3/10!)\n\nPenyebut tidak ikut dijumlah karena ukuran potongannya tidak berubah.",
+        "examples_md": "1. 2/7 + 3/7 → pembilang 2 + 3 = 5 → **5/7**.\n2. Ibu memakai 1/4 liter susu pagi dan 2/4 liter sore → 1/4 + 2/4 = **3/4 liter**.",
+        "exercises": [
+            {"q": "1/6 + 4/6 = …", "answer": "5/6"},
+            {"q": "3/9 + 2/9 = …", "answer": "5/9"},
+            {"q": "Dina membaca 2/8 buku hari ini dan 3/8 buku besok. Berapa bagian yang sudah dibaca?", "answer": "5/8"}
+        ],
+        "teacher_tips_md": "- Tunjukkan dengan strip pecahan: gabungkan potongan yang sama ukurannya.\n- Minta siswa mengucapkan \"dua per tujuh ditambah tiga per tujuh sama dengan lima per tujuh\" sambil menunjuk gambar.\n- Beri contoh jawaban keliru (3/10) dan minta mereka menjelaskan mengapa keliru."
+    },
+    "3": {
+        "title": "Menjumlah Pecahan Berpenyebut Berbeda",
+        "concept_md": "Pecahan dengan penyebut berbeda punya ukuran potongan yang berbeda, jadi **samakan penyebutnya dulu**.\n\nLangkah:\n1. Cari KPK penyebut.\n2. Ubah tiap pecahan menjadi pecahan senilai, **pembilang juga dikali**.\n3. Jumlahkan pembilangnya.\n\n1/2 + 1/3 = 3/6 + 2/6 = **5/6**.",
+        "examples_md": "1. 1/4 + 1/2 → 1/2 = 2/4 → 1/4 + 2/4 = **3/4**.\n2. 2/3 + 1/6 → 2/3 = 4/6 → 4/6 + 1/6 = **5/6**.",
+        "exercises": [
+            {"q": "1/3 + 1/6 = …", "answer": "3/6 = 1/2"},
+            {"q": "1/2 + 1/5 = …", "answer": "7/10"},
+            {"q": "Budi mengecat 1/4 pagar pagi hari dan 2/3 pagar sore hari. Berapa bagian pagar yang sudah dicat?", "answer": "11/12"}
+        ],
+        "teacher_tips_md": "- Tekankan: menyamakan penyebut = memotong ulang agar ukurannya sama, sehingga pembilang ikut berubah.\n- Gunakan tabel kelipatan untuk mencari KPK.\n- Minta siswa memeriksa jawaban dengan gambar lingkaran pecahan."
+    },
+    "4": {
+        "title": "Pengayaan: Soal Cerita Pecahan Campuran",
+        "concept_md": "Kamu sudah menguasai penjumlahan pecahan. Sekarang terapkan ke **masalah sehari-hari** yang melibatkan pecahan campuran dan beberapa langkah.\n\nStrategi: pahami soal → tulis kalimat matematika → hitung → cek apakah jawabannya masuk akal.",
+        "examples_md": "1. 1 1/2 + 2/3 → ubah ke pecahan biasa 3/2 + 2/3 = 9/6 + 4/6 = 13/6 = **2 1/6**.\n2. Resep butuh 3/4 kg tepung. Ibu punya 2 kg. Setelah dua kali membuat kue, sisa tepung = 2 − 3/2 = **1/2 kg**.",
+        "exercises": [
+            {"q": "2 1/4 + 1 1/2 = …", "answer": "3 3/4"},
+            {"q": "Sebuah tali 5 m dipakai 1 2/5 m dan 2 1/2 m. Berapa sisa tali?", "answer": "1 1/10 m"},
+            {"q": "Buat sendiri satu soal cerita penjumlahan pecahan berpenyebut beda, lalu selesaikan.", "answer": "Jawaban bervariasi"}
+        ],
+        "teacher_tips_md": "- Jadikan siswa kelompok ini tutor sebaya untuk kelompok lain.\n- Beri proyek kecil: menghitung resep kue untuk kelas.\n- Dorong mereka menjelaskan strategi, bukan hanya jawaban."
+    }
+}

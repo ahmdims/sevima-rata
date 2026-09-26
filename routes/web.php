@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Guru\AssessmentController;
 use App\Http\Controllers\Guru\DashboardController;
+use App\Http\Controllers\Guru\MaterialController;
 use App\Http\Controllers\Siswa\AttemptController;
 use App\Http\Controllers\Siswa\JoinController;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,6 @@ Route::prefix('guru')->name('guru.')->group(function () {
     Route::get('/asesmen/{assessment}', [AssessmentController::class, 'show'])->name('asesmen.show');
     Route::post('/asesmen/{assessment}/publikasi', [AssessmentController::class, 'publish'])->name('asesmen.publish');
     Route::get('/asesmen/{assessment}/hasil', [AssessmentController::class, 'results'])->name('asesmen.hasil');
+    Route::post('/asesmen/{assessment}/materi/{level}', [MaterialController::class, 'store'])->whereNumber('level')->name('materi.store');
+    Route::get('/asesmen/{assessment}/materi/{level}', [MaterialController::class, 'show'])->whereNumber('level')->name('materi.show');
 });

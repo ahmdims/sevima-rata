@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Siswa;
 use App\Http\Controllers\Controller;
 use App\Models\Attempt;
 use App\Services\AttemptGrader;
+use App\Services\RataAi;
 use Illuminate\Http\Request;
 
 class AttemptController extends Controller
@@ -29,7 +30,7 @@ class AttemptController extends Controller
         ]);
     }
 
-    public function answer(Request $request, Attempt $attempt, AttemptGrader $grader)
+    public function answer(Request $request, Attempt $attempt, AttemptGrader $grader, RataAi $ai)
     {
         $this->authorizeAttempt($request, $attempt);
         abort_if($attempt->isFinished(), 409);
@@ -46,6 +47,7 @@ class AttemptController extends Controller
 
         if ($attempt->answers()->count() >= $attempt->assessment->questions()->count()) {
             $grader->finish($attempt);
+            $this->writeFeedback($attempt, $ai);
 
             return redirect()->route('siswa.hasil', $attempt);
         }
@@ -62,6 +64,21 @@ class AttemptController extends Controller
         }
 
         return view('siswa.hasil', ['attempt' => $attempt->load('assessment')]);
+    }
+
+    private function writeFeedback(Attempt $attempt, RataAi $ai): void
+    {
+        $assessment = $attempt->assessment;
+        $level = $attempt->level;
+
+        $attempt->update(['feedback' => $ai->generateFeedback(
+            $attempt->student_name,
+            $level,
+            $assessment->topic,
+            $level > 0 ? $assessment->levelLabel($level) : null,
+            $level < config('rata.assessment.levels') ? $assessment->levelLabel($level + 1) : null,
+            $attempt->topMisconception(),
+        )]);
     }
 
     /** Hanya perangkat yang memulai attempt yang boleh membukanya (tanpa akun siswa). */

@@ -1,59 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# RATA — Ruang Ajar Tepat Level
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **Setiap anak belajar di level yang tepat.**
+> Project Hackathon SEMESTA 8 · Tech Career Academy by SEVIMA · Tema *Empowering Youth for a Sustainable Future: Build with AI* · SDG 4 Quality Education
 
-## About Laravel
+RATA membantu guru menjalankan **asesmen diagnostik → pengelompokan siswa per level → materi berdiferensiasi** dalam hitungan menit, bukan hari. Pendekatannya mengikuti *Teaching at the Right Level* (TaRL).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. **Guru menulis topik.** AI membuat 12 soal diagnostik dalam 4 level, dan setiap pilihan salah diberi label miskonsepsi.
+2. **Siswa mengerjakan dari HP** cukup dengan kode kelas dan nama. Level dihitung **secara deterministik** (tanpa AI) supaya konsisten dan bisa diaudit.
+3. **Dashboard guru** mengelompokkan siswa per level dan menampilkan miskonsepsi terbanyak. AI lalu membuat materi yang berbeda untuk tiap kelompok.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Detail produk: [docs/PRD.md](docs/PRD.md) · Proses pemilihan ide: [docs/BRAINSTORMING.md](docs/BRAINSTORMING.md)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tech Stack
 
-## Learning Laravel
+| Lapisan | Teknologi |
+|---|---|
+| Backend | Laravel 12 (PHP 8.2+) |
+| Frontend | Blade, Tailwind CSS v4, Alpine.js (tanpa SPA, ringan untuk HP) |
+| Database | SQLite |
+| AI | Claude API (`claude-haiku-4-5-20251001`, bisa diganti lewat `LLM_MODEL`) |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Menjalankan Secara Lokal
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Prasyarat: PHP 8.2+, Composer, Node.js 20+.
 
-## Laravel Sponsors
+```bash
+git clone https://github.com/ahmdims/sevima-rata.git
+cd sevima-rata
+composer run setup   # install dependensi, buat .env, APP_KEY, database SQLite + data demo, build aset
+composer run dev     # php artisan serve + Vite
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Buka http://localhost:8000.
 
-### Premium Partners
+<details>
+<summary>Langkah manual (tanpa <code>composer run setup</code>)</summary>
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
+php artisan migrate:fresh --seed
+npm install && npm run build
+php artisan serve
+```
+</details>
 
-## Contributing
+### Konfigurasi AI
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Variabel `.env` | Default | Keterangan |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | — | API key Claude. |
+| `LLM_MODEL` | `claude-haiku-4-5-20251001` | Model yang dipakai. |
+| `LLM_FAKE` | `true` | `true` = memakai data contoh tanpa memanggil API, sehingga demo tetap jalan tanpa API key atau internet. |
+| `LLM_TIMEOUT` | `60` | Timeout request (detik). |
+| `LLM_MAX_RETRIES` | `2` | Jumlah retry jika output AI tidak lolos validasi skema. |
 
-## Code of Conduct
+Untuk memakai AI sungguhan, isi `ANTHROPIC_API_KEY` dan set `LLM_FAKE=false`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Testing
 
-## Security Vulnerabilities
+```bash
+php artisan test
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Struktur Penting
 
-## License
+```
+config/rata.php                 Konfigurasi LLM, aturan level, nama level
+resources/css/app.css           Design token (warna, font, warna tiap level)
+resources/views/components/     Layout (base, guru, siswa) & komponen UI
+docs/                           PRD, brainstorming, materi tema hackathon
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Alur Pengembangan
+
+Branch utama `master`. Setiap fitur dikerjakan di branch sendiri (`feat/…`, `fix/…`, `chore/…`, `docs/…`) dan di-merge ke `master` dengan `--no-ff` setelah terverifikasi.

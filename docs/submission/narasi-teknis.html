@@ -1,0 +1,35 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Narasi Teknis RATA</title><link href="https://fonts.bunny.net/css?family=inter:400,600|instrument-serif:400" rel="stylesheet"><style>@page{size:A4;margin:18mm 20mm}body{font-family:Inter,system-ui,sans-serif;color:#0f172a;font-size:10.5pt;line-height:1.55}h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26pt;margin:0 0 4pt;color:#0f172a}h1+p{color:#5b6478}h2{font-size:12.5pt;margin:14pt 0 4pt;color:#1d41c4;border-bottom:1px solid #e5e8f0;padding-bottom:3pt}p,li{color:#334155}ul,ol{padding-left:18pt;margin:4pt 0}li{margin:2pt 0}strong{color:#0f172a}code{font-size:9.5pt;background:#f5f7fb;padding:0 3pt;border-radius:3pt}.meta{font-size:9pt;color:#5b6478;margin-bottom:10pt}</style></head><body><div class="meta">Hackathon SEMESTA 8 · Tech Career Academy by SEVIMA · github.com/ahmdims/sevima-rata</div><h1>Narasi Teknis — RATA (Ruang Ajar Tepat Level)</h1>
+<h2>1. Problem Statement</h2>
+<p>Dalam satu kelas, kemampuan siswa sangat beragam, tetapi guru mengajar dengan satu tingkat yang sama sehingga siswa yang tertinggal makin tertinggal. Skor PISA 2022 Indonesia (Matematika 366, Membaca 359) jauh di bawah rata-rata OECD. Kurikulum Merdeka mewajibkan asesmen diagnostik dan pembelajaran berdiferensiasi, namun guru dengan 30–40 siswa tidak punya waktu untuk menyusun soal diagnostik, menganalisis jawaban per siswa, lalu menyiapkan materi berbeda untuk tiap kelompok.</p>
+<h2>2. Solusi</h2>
+<p>RATA menerapkan pendekatan <em>Teaching at the Right Level</em> dengan bantuan AI:</p>
+<ol>
+<li>Guru menulis topik, lalu AI menyusun 12 soal dalam 4 level. Setiap pilihan salah dipetakan ke miskonsepsi yang spesifik.</li>
+<li>Siswa mengerjakan dari HP cukup dengan kode kelas dan nama, satu soal per layar.</li>
+<li>Dashboard langsung mengelompokkan siswa per level dan menampilkan miskonsepsi terbanyak.</li>
+<li>Satu klik menghasilkan materi berdiferensiasi untuk tiap kelompok: konsep, contoh, latihan bertahap, dan tips mengajar.</li>
+</ol>
+<p>Pekerjaan berhari-hari menjadi beberapa menit.</p>
+<h2>3. Keputusan Teknis</h2>
+<ul>
+<li><strong>LLM untuk menghasilkan konten, logika deterministik untuk menilai.</strong> Level dihitung dengan aturan tetap (lulus ≥2 dari 3 soal di setiap level secara berurutan) di <code>LevelScorer</code>, dan aturan ini diuji unit test. Jawaban yang sama selalu menghasilkan level yang sama, cepat, gratis, dan bisa diaudit guru.</li>
+<li><strong>Output AI divalidasi terhadap skema.</strong> Yang dicek: jumlah level dan soal, kunci jawaban ada di opsi, dan setiap opsi salah punya miskonsepsi. Jika tidak valid, AI diminta memperbaiki dengan menyertakan daftar error (retry). Jika tetap gagal, sistem memakai fallback sehingga demo tidak pernah macet (<code>LLM_FAKE</code>).</li>
+<li><strong>Stack ringan:</strong> Laravel 12 + Blade + Tailwind v4 + Alpine.js + SQLite, tanpa SPA. Halaman siswa tetap ringan untuk HP murah dan kuota terbatas. Claude API dipanggil lewat SDK resmi PHP melalui satu service.</li>
+<li><strong>Design system berbasis psikologi dan WCAG 2.2 AA.</strong> Tidak ada merah, skor, atau kata &quot;gagal&quot; untuk siswa. Level memakai metafora pertumbuhan (Benih sampai Berbuah). Kontras warna diverifikasi dengan script lint.</li>
+</ul>
+<h2>4. Tantangan &amp; Cara Mengatasi</h2>
+<ul>
+<li><strong>Output LLM tidak konsisten</strong> (format JSON, kunci salah, distraktor acak). Diatasi dengan prompt berskema, validator, retry berbasis pesan error, dan label miskonsepsi yang diseragamkan agar bisa dihitung.</li>
+<li><strong>Latensi AI 10–30 detik.</strong> Loading menampilkan langkah yang sedang dikerjakan (<em>labor illusion</em>), dan hasil AI disimpan ke database sehingga tidak dipanggil ulang.</li>
+<li><strong>Siswa tanpa akun.</strong> Kepemilikan attempt dijaga lewat sesi perangkat.</li>
+<li><strong>Waktu 8 jam.</strong> Setiap fitur dikerjakan di branch terpisah dengan 25 test otomatis.</li>
+</ul>
+<h2>5. Dampak &amp; Pengembangan Lanjut</h2>
+<p>Guru mendapat peta kemampuan kelas dan materi siap pakai dalam hitungan menit, sehingga pembelajaran berdiferensiasi benar-benar bisa dijalankan. Siswa belajar di level yang tepat tanpa rasa takut dinilai. Pengembangan berikutnya:</p>
+<ul>
+<li>asesmen ulang untuk mengukur kemajuan</li>
+<li>dukungan bahasa daerah</li>
+<li>mode offline (PWA) untuk daerah 3T</li>
+<li>integrasi dengan LMS/SIAKAD SEVIMA</li>
+</ul>
+</body></html>

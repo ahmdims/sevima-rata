@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>RATA — Slide Deck Hackathon SEMESTA 8</title>
+<link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|instrument-serif:400,400i" rel="stylesheet">
+<style>
+    @page { size: 1280px 720px; margin: 0; }
+    :root {
+        --canvas: #f5f7fb; --surface: #fff; --line: #e5e8f0; --ink: #0f172a; --ink-soft: #334155; --muted: #5b6478;
+        --brand: #2553e8; --brand-50: #eef4ff; --brand-700: #1d41c4; --ai: #7c3aed; --ai-50: #f5f3ff;
+        --l0: #d97706; --l1: #65a30d; --l2: #059669; --l3: #0891b2; --l4: #4f46e5;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--ink); background: #999; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .slide {
+        width: 1280px; height: 720px; padding: 64px 80px; position: relative; overflow: hidden; page-break-after: always;
+        background: radial-gradient(60% 50% at 15% 0%, rgba(59,108,246,.16), transparent 70%), radial-gradient(50% 40% at 90% 5%, rgba(139,92,246,.14), transparent 70%), var(--canvas);
+    }
+    .slide:last-child { page-break-after: auto; }
+    .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 88px; line-height: 1.02; letter-spacing: -.01em; }
+    h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 56px; line-height: 1.08; margin-top: 12px; }
+    h1 em, h2 em { color: var(--brand); }
+    p.lead { font-size: 22px; line-height: 1.5; color: var(--ink-soft); margin-top: 20px; max-width: 900px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; box-shadow: 0 1px 3px rgba(15,23,42,.04); }
+    .grid { display: grid; gap: 20px; margin-top: 36px; }
+    .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+    .big { font-size: 64px; font-weight: 600; letter-spacing: -.02em; }
+    .card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+    .card p { font-size: 16px; line-height: 1.5; color: var(--ink-soft); }
+    .num { width: 40px; height: 40px; border-radius: 12px; background: var(--brand-50); color: var(--brand-700); font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .ai .num { background: var(--ai-50); color: var(--ai); }
+    .footer { position: absolute; left: 80px; right: 80px; bottom: 32px; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
+    .logo i { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #3b6cf6, #8b5cf6); display: inline-block; }
+    .shot { width: 100%; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 48px -12px rgba(15,23,42,.18); display: block; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 600; }
+    ul.clean { list-style: none; padding: 0; } ul.clean li { font-size: 18px; line-height: 1.45; color: var(--ink-soft); padding: 8px 0 8px 30px; position: relative; }
+    ul.clean li::before { content: ''; position: absolute; left: 0; top: 17px; width: 12px; height: 12px; border-radius: 50%; background: var(--brand); }
+    .src { font-size: 12px; color: var(--muted); margin-top: 18px; }
+    table { width: 100%; border-collapse: collapse; font-size: 17px; } td { padding: 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+    td:first-child { font-weight: 600; width: 220px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Judul -->
+<section class="slide">
+    <span class="logo"><i></i>RATA</span>
+    <div style="margin-top: 110px">
+        <p class="eyebrow">Ruang Ajar Tepat Level · SDG 4 Quality Education</p>
+        <h1 style="margin-top: 20px">Setiap anak belajar<br><em>di level yang tepat.</em></h1>
+        <p class="lead">Asesmen diagnostik berbasis AI yang mengelompokkan siswa sesuai kemampuannya dan menyiapkan materi berbeda untuk tiap kelompok dalam hitungan menit.</p>
+    </div>
+    <div class="footer"><span>Hackathon SEMESTA 8 · Tech Career Academy by SEVIMA</span><span>github.com/ahmdims/sevima-rata</span></div>
+</section>
+
+<!-- 2. Problem -->
+<section class="slide">
+    <p class="eyebrow">Problem statement</p>
+    <h2>Satu kelas, banyak level kemampuan, tapi <em>satu cara mengajar.</em></h2>
+    <div class="grid g3">
+        <div class="card"><div class="big">366</div><p>Skor Matematika PISA 2022 Indonesia, jauh di bawah rata-rata OECD. Membaca: 359.</p></div>
+        <div class="card"><div class="big">30–40</div><p>Siswa per kelas. Guru tidak sempat membuat soal diagnostik, menganalisis per siswa, dan menyiapkan materi berbeda.</p></div>
+        <div class="card"><div class="big">Wajib</div><p>Kurikulum Merdeka mewajibkan asesmen diagnostik &amp; pembelajaran berdiferensiasi, tetapi alatnya belum ada.</p></div>
+    </div>
+    <p class="lead" style="font-size: 20px">Akibatnya, siswa yang tertinggal makin tertinggal, dan siswa yang sudah mahir tidak tertantang.</p>
+    <p class="src">Sumber: OECD PISA 2022 Results; Kemendikbudristek, Panduan Pembelajaran dan Asesmen Kurikulum Merdeka.</p>
+</section>
+
+<!-- 3. Kenapa belum cukup -->
+<section class="slide">
+    <p class="eyebrow">Kenapa solusi yang ada belum cukup</p>
+    <h2>Generator soal biasa hanya memberi <em>nilai</em>, bukan <em>arah.</em></h2>
+    <div class="grid g2">
+        <div class="card">
+            <h3>Yang umum tersedia</h3>
+            <ul class="clean">
+                <li>Soal acak tanpa jenjang kompetensi</li>
+                <li>Hasil berupa skor: tahu "berapa", tidak tahu "kenapa salah"</li>
+                <li>Guru tetap menyusun materi berdiferensiasi sendiri</li>
+            </ul>
+        </div>
+        <div class="card" style="border-color: #bcd0ff">
+            <h3>Pendekatan RATA</h3>
+            <ul class="clean">
+                <li><b>Teaching at the Right Level</b>, pendekatan yang teruji riset (J-PAL/Pratham)</li>
+                <li>Setiap jawaban salah terhubung ke <b>miskonsepsi</b> yang spesifik</li>
+                <li>Langsung menghasilkan <b>kelompok + materi</b> yang siap dipakai</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Solusi -->
+<section class="slide">
+    <p class="eyebrow">Solusi</p>
+    <h2>RATA dalam <em>tiga langkah.</em></h2>
+    <div class="grid g3">
+        <div class="card ai"><div class="num">1</div><h3>Guru menulis topik</h3><p>AI menyusun 12 soal dalam 4 level kompetensi. Setiap pilihan salah dipetakan ke miskonsepsi. Guru meninjau lalu mempublikasikan.</p></div>
+        <div class="card"><div class="num">2</div><h3>Siswa mengerjakan dari HP</h3><p>Cukup kode kelas dan nama panggilan, tanpa akun. Satu soal per layar, dan hasilnya tanpa skor, dengan umpan balik yang menyemangati.</p></div>
+        <div class="card ai"><div class="num">3</div><h3>Kelompok &amp; materi otomatis</h3><p>Dashboard mengelompokkan siswa per level dan menampilkan miskonsepsi terbanyak. Satu klik menghasilkan materi untuk tiap kelompok.</p></div>
+    </div>
+    <p class="lead" style="font-size: 20px">Pekerjaan diagnostik dan diferensiasi yang biasanya berhari-hari → <b>beberapa menit</b>.</p>
+</section>
+
+<!-- 5. Demo guru -->
+<section class="slide" style="padding-top: 48px">
+    <p class="eyebrow">Demo · Dashboard guru</p>
+    <div style="display: grid; grid-template-columns: 1.55fr 1fr; gap: 32px; margin-top: 20px; align-items: start">
+        <img class="shot" src="../screenshots/2-dashboard-hasil.png" style="height: 560px; object-fit: cover; object-position: top">
+        <div>
+            <h2 style="font-size: 44px; margin-top: 0">Siswa langsung <em>terkelompok.</em></h2>
+            <ul class="clean" style="margin-top: 16px">
+                <li>KPI: siswa selesai, perlu pendampingan, siap pengayaan</li>
+                <li>Distribusi 5 level. Siswa yang belum selesai ditandai arsiran</li>
+                <li>Top-5 miskonsepsi kelas</li>
+                <li>Kartu kelompok, masing-masing dengan tombol <b>"Buat materi kelompok"</b></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 6. Demo siswa + materi -->
+<section class="slide" style="padding-top: 48px">
+    <p class="eyebrow">Demo · Siswa &amp; materi berdiferensiasi</p>
+    <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; margin-top: 20px; align-items: start">
+        <img class="shot" src="../screenshots/5-siswa.png">
+        <img class="shot" src="../screenshots/3-materi-kelompok.png" style="height: 400px; object-fit: cover; object-position: top left">
+    </div>
+    <p class="lead" style="font-size: 18px; margin-top: 22px">Siswa: satu soal per layar, lalu hasil dengan metafora pertumbuhan. Guru: materi (konsep, contoh, 3 latihan, tips mengajar) yang siap dicetak.</p>
+</section>
+
+<!-- 7. Cara kerja AI -->
+<section class="slide">
+    <p class="eyebrow">Keputusan teknis inti</p>
+    <h2>LLM untuk <em>membuat konten</em>, logika tetap untuk <em>menilai.</em></h2>
+    <div class="grid g4" style="margin-top: 32px">
+        <div class="card ai"><div class="num">AI</div><h3>Generate soal</h3><p>Prompt berskema → JSON 4 level × 3 soal + label miskonsepsi.</p></div>
+        <div class="card"><div class="num">✓</div><h3>Validasi skema</h3><p>Cek jumlah soal, kunci, dan miskonsepsi. Jika tidak valid, AI diminta memperbaiki (retry dengan daftar error).</p></div>
+        <div class="card"><div class="num">=</div><h3>Level deterministik</h3><p>Lulus ≥2/3 di setiap level secara berurutan. Konsisten, bisa diaudit, dan diuji unit test.</p></div>
+        <div class="card ai"><div class="num">AI</div><h3>Materi &amp; feedback</h3><p>Berdasarkan miskonsepsi kelompok. Hasil disimpan sehingga tidak dipanggil ulang.</p></div>
+    </div>
+    <p class="lead" style="font-size: 19px">Fallback otomatis (<code>LLM_FAKE</code>) memastikan demo tetap berjalan tanpa internet atau API key.</p>
+</section>
+
+<!-- 8. Tech stack -->
+<section class="slide">
+    <p class="eyebrow">Tech stack &amp; kualitas</p>
+    <h2>Ringan untuk HP murah, <em>rapi untuk dirawat.</em></h2>
+    <div class="grid g2">
+        <div class="card">
+            <table>
+                <tr><td>Backend</td><td>Laravel 12 · PHP 8.2 · SQLite</td></tr>
+                <tr><td>Frontend</td><td>Blade · Tailwind CSS v4 · Alpine.js (tanpa SPA)</td></tr>
+                <tr><td>AI</td><td>Claude API via SDK resmi <code>anthropic-ai/sdk</code></td></tr>
+                <tr><td>Design system</td><td>17 komponen Blade · token WCAG 2.2 AA · <code>/ui-kit</code></td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <ul class="clean">
+                <li><b>25 test otomatis</b> (unit + feature)</li>
+                <li>Lint desain: 26/26 pasangan warna lolos kontras</li>
+                <li>Git flow: 1 fitur = 1 branch, merge <code>--no-ff</code></li>
+                <li><code>composer run setup</code>: satu perintah, langsung siap demo</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 9. Value -->
+<section class="slide">
+    <p class="eyebrow">Value &amp; dampak</p>
+    <h2>Dirancang untuk <em>psikologi</em> guru dan siswa.</h2>
+    <div class="grid g3">
+        <div class="card"><h3>Untuk guru</h3><p>Peta kemampuan kelas + materi siap pakai dalam hitungan menit. AI transparan: diberi label, bisa ditinjau, dan bisa dibuat ulang.</p></div>
+        <div class="card"><h3>Untuk siswa</h3><p>Tanpa skor, tanpa merah, dan tanpa kata "gagal". Level memakai metafora pertumbuhan: <span class="pill" style="background:#fef3c7;color:#92400e">Benih</span> → <span class="pill" style="background:#e0e7ff;color:#3730a3">Berbuah</span></p></div>
+        <div class="card"><h3>Untuk sekolah</h3><p>Menjalankan amanat Kurikulum Merdeka dan memeratakan kualitas belajar (SDG 4: <i>inclusive &amp; equitable</i>).</p></div>
+    </div>
+    <p class="lead" style="font-size: 19px"><b>Roadmap:</b> asesmen ulang untuk mengukur kemajuan · bahasa daerah · mode offline (PWA) untuk daerah 3T · integrasi LMS/SIAKAD SEVIMA.</p>
+</section>
+
+<!-- 10. Penutup -->
+<section class="slide">
+    <span class="logo"><i></i>RATA</span>
+    <div style="margin-top: 120px">
+        <h1>Terima kasih.<br><em>Mari belajar di level yang tepat.</em></h1>
+        <p class="lead">Repo: <b>github.com/ahmdims/sevima-rata</b> · Demo lokal: <code>composer run setup &amp;&amp; composer run dev</code> · kode kelas demo <b>RATA5A</b></p>
+    </div>
+    <div class="footer"><span>Hackathon SEMESTA 8 · #hackathonsemesta2026</span><span>RATA — Ruang Ajar Tepat Level</span></div>
+</section>
+
+</body>
+</html>

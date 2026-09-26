@@ -10,7 +10,11 @@ class StudentFlowTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected $seed = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
+    }
 
     public function test_student_can_join_answer_all_questions_and_see_result(): void
     {

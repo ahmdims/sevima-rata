@@ -9,7 +9,7 @@ RATA membantu guru menjalankan **asesmen diagnostik → pengelompokan siswa per 
 2. **Siswa mengerjakan dari HP** cukup dengan kode kelas dan nama. Level dihitung **secara deterministik** (tanpa AI) supaya konsisten dan bisa diaudit.
 3. **Dashboard guru** mengelompokkan siswa per level dan menampilkan miskonsepsi terbanyak. AI lalu membuat materi yang berbeda untuk tiap kelompok.
 
-Detail produk: [docs/PRD.md](docs/PRD.md) · Proses pemilihan ide: [docs/BRAINSTORMING.md](docs/BRAINSTORMING.md)
+Detail produk: [docs/PRD.md](docs/PRD.md) · Design system: [docs/DESIGN.md](docs/DESIGN.md) (contoh hidup di `/ui-kit`) · Proses pemilihan ide: [docs/BRAINSTORMING.md](docs/BRAINSTORMING.md)
 
 ## Tech Stack
 
@@ -69,9 +69,10 @@ php artisan test
 
 ```
 config/rata.php                 Konfigurasi LLM, aturan level, nama level
-resources/css/app.css           Design token (warna, font, warna tiap level)
-resources/views/components/     Layout (base, guru, siswa) & komponen UI
-docs/                           PRD, brainstorming, materi tema hackathon
+resources/css/app.css           Design token (warna, font, level) — lolos kontras WCAG 2.2 AA
+resources/views/components/ui/  UI kit Blade (<x-ui.button>, <x-ui.card>, <x-ui.level-badge>, …)
+resources/views/components/layouts/  Layout base, guru, siswa
+docs/                           PRD, design system, brainstorming, materi tema hackathon
 ```
 
 ## Alur Pengembangan

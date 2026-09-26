@@ -42,12 +42,31 @@ return [
         'class_code_length' => 6,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Nama level
+    |--------------------------------------------------------------------------
+    |
+    | `level_names` untuk guru (istilah pedagogis). `level_growth` untuk siswa:
+    | metafora pertumbuhan tanaman agar level rendah terasa sebagai titik
+    | mulai, bukan kegagalan (growth mindset). Lihat docs/DESIGN.md §2.
+    |
+    */
+
     'level_names' => [
         0 => 'Pra-Dasar',
         1 => 'Dasar',
         2 => 'Berkembang',
         3 => 'Cakap',
         4 => 'Mahir',
+    ],
+
+    'level_growth' => [
+        0 => 'Benih',
+        1 => 'Tunas',
+        2 => 'Tumbuh',
+        3 => 'Berbunga',
+        4 => 'Berbuah',
     ],
 
 ];

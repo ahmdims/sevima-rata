@@ -49,6 +49,7 @@ Jika user meminta fitur di luar PRD, ingatkan dampaknya ke waktu secara singkat,
 - Nama route dan tampilan dalam Bahasa Indonesia sesuai PRD §12 (`/guru`, `/join`, `/kerjakan/{attempt}`, `/hasil/{attempt}`). Nama class/method dalam Bahasa Inggris.
 - Controller tipis, logika di Service. Validasi pakai `$request->validate()`.
 - Render konten Markdown dari AI dengan `Str::markdown($md, ['html_input' => 'strip'])`.
+- **UI wajib mengikuti skill `rata-design`** (`docs/DESIGN.md`): pakai komponen `<x-ui.*>`, warna hanya dari token, dan jalankan lint desain sebelum menyatakan UI selesai.
 - Halaman siswa mobile-first. Uji di lebar 375px.
 - Seeder harus membuat dashboard langsung terisi (1 kelas, asesmen Pecahan kelas 5, ±12 siswa dengan pola jawaban bervariasi) agar demo bisa dimulai dari `php artisan migrate:fresh --seed`.
 

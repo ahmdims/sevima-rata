@@ -17,7 +17,7 @@ return [
         'api_key' => env('ANTHROPIC_API_KEY'),
         'base_url' => env('LLM_BASE_URL', 'https://api.anthropic.com/v1'),
         'api_version' => env('LLM_API_VERSION', '2023-06-01'),
-        'model' => env('LLM_MODEL', 'claude-haiku-4-5-20251001'),
+        'model' => env('LLM_MODEL', 'claude-haiku-4-5'),
         'max_tokens' => (int) env('LLM_MAX_TOKENS', 8000),
         'timeout' => (int) env('LLM_TIMEOUT', 60),
         'max_retries' => (int) env('LLM_MAX_RETRIES', 2),

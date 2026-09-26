@@ -17,7 +17,7 @@ RATA adalah aplikasi asesmen diagnostik berbasis AI. Guru mengetik topik, AI mem
 
 ## Tech stack (jangan diganti tanpa alasan kuat)
 - Laravel (PHP 8.2 di Laragon), Blade + Tailwind + Alpine.js, SQLite.
-- LLM: Claude API via `Http::` Laravel. Konfigurasi lewat `.env`: `ANTHROPIC_API_KEY`, `LLM_MODEL` (default `claude-haiku-4-5-20251001`), `LLM_FAKE`.
+- LLM: Claude API via SDK resmi `anthropic-ai/sdk` (`Anthropic\Client`). Konfigurasi lewat `.env`: `ANTHROPIC_API_KEY`, `LLM_MODEL` (default `claude-haiku-4-5`), `LLM_FAKE`.
 - Tidak memakai SPA/React, queue worker, Redis, atau Docker. Semua itu menambah waktu setup tanpa menambah nilai demo.
 
 ## Prioritas

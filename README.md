@@ -11,6 +11,17 @@ RATA membantu guru menjalankan **asesmen diagnostik → pengelompokan siswa per 
 
 Detail produk: [docs/PRD.md](docs/PRD.md) · Design system: [docs/DESIGN.md](docs/DESIGN.md) (contoh hidup di `/ui-kit`) · Proses pemilihan ide: [docs/BRAINSTORMING.md](docs/BRAINSTORMING.md)
 
+## Tampilan
+
+| Dashboard hasil (guru) | Materi per kelompok (AI) |
+|---|---|
+| ![Dashboard hasil](docs/screenshots/2-dashboard-hasil.png) | ![Materi kelompok](docs/screenshots/3-materi-kelompok.png) |
+| **Buat asesmen dengan AI** | **Soal diagnostik + miskonsepsi** |
+| ![Buat asesmen](docs/screenshots/4-buat-asesmen.png) | ![Soal diagnostik](docs/screenshots/6-soal-diagnostik.png) |
+
+**Alur siswa (mobile):** masuk dengan kode kelas → satu soal per layar → hasil tanpa skor
+![Alur siswa](docs/screenshots/5-siswa.png)
+
 ## Fitur
 
 | Untuk | Fitur |
@@ -95,6 +106,15 @@ resources/views/components/ui/  UI kit Blade (<x-ui.button>, <x-ui.card>, <x-ui.
 resources/views/components/layouts/  Layout base, guru, siswa
 docs/                           PRD, design system, brainstorming, materi tema hackathon
 ```
+
+## Materi Submission
+
+| Output | File |
+|---|---|
+| Slide deck (10 slide) | [docs/submission/RATA-Slide-Deck.pdf](docs/submission/RATA-Slide-Deck.pdf) · sumber: [slides.html](docs/submission/slides.html) |
+| Narasi teknis (≤500 kata, 5 field) | [docs/submission/RATA-Narasi-Teknis.pdf](docs/submission/RATA-Narasi-Teknis.pdf) · sumber: [NARASI_TEKNIS.md](docs/NARASI_TEKNIS.md) |
+| Skenario demo video (≤5 menit) | [docs/PRD.md §15](docs/PRD.md) |
+| Dokumen produk | [PRD](docs/PRD.md) · [Design System](docs/DESIGN.md) · [Brainstorming](docs/BRAINSTORMING.md) |
 
 ## Alur Pengembangan
 

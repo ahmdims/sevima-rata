@@ -7,77 +7,206 @@
 @source '../**/*.js';
 
 /*
- * Design token RATA — terang dan lapang: latar abu kebiruan, kartu putih,
- * aksen biru, heading serif. Warna level dipakai konsisten di badge,
- * progress bar, dan chart distribusi kelompok.
- */
+|--------------------------------------------------------------------------
+| RATA Design Tokens
+|--------------------------------------------------------------------------
+| Sumber kebenaran visual. Dokumentasi lengkap: docs/DESIGN.md.
+| Semua pasangan teks/latar sudah dicek kontrasnya (WCAG 2.2 AA).
+| Jangan menambah warna hex langsung di Blade; tambahkan token di sini.
+*/
 @theme {
+    /* Tipografi */
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'Instrument Serif', ui-serif, Georgia, serif;
 
-    --color-canvas: #f4f6fb;
-    --color-surface: #ffffff;
-    --color-line: #e6e9f2;
-    --color-ink: #0f172a;
-    --color-muted: #64748b;
+    /* Netral (slate dingin) */
+    --color-canvas: #f5f7fb;       /* latar halaman */
+    --color-surface: #ffffff;      /* kartu, panel */
+    --color-subtle: #f8fafc;       /* hover baris, latar sekunder */
+    --color-line: #e5e8f0;         /* border dekoratif kartu & divider */
+    --color-field: #858fa3;        /* border input — 3.25:1 (WCAG 1.4.11) */
+    --color-ink: #0f172a;          /* teks utama — 17.9:1 */
+    --color-ink-soft: #334155;     /* teks isi sekunder — 10.4:1 */
+    --color-muted: #5b6478;        /* caption, meta — 5.9:1 */
+    --color-placeholder: #8a93a6;  /* placeholder — 3.1:1 */
 
+    /* Brand — biru: kepercayaan, tenang, fokus */
     --color-brand-50: #eef4ff;
-    --color-brand-100: #dbe7ff;
-    --color-brand-200: #bfd3ff;
-    --color-brand-500: #3b6cf6;
-    --color-brand-600: #2553e8;
-    --color-brand-700: #1d41c4;
+    --color-brand-100: #dce6ff;
+    --color-brand-200: #bcd0ff;
+    --color-brand-300: #8fb0ff;
+    --color-brand-400: #5e88fa;
+    --color-brand-500: #3b6cf6;    /* focus ring */
+    --color-brand-600: #2553e8;    /* aksi utama, link */
+    --color-brand-700: #1d41c4;    /* hover, teks di atas brand-50 */
+    --color-brand-800: #1c379c;
+    --color-brand-900: #1c327b;
 
-    --color-level-0: #ef4444;
-    --color-level-1: #f97316;
-    --color-level-2: #eab308;
-    --color-level-3: #22c55e;
-    --color-level-4: #8b5cf6;
+    /* AI — violet: penanda semua konten/aksi buatan AI */
+    --color-ai-50: #f5f3ff;
+    --color-ai-100: #ede9fe;
+    --color-ai-500: #8b5cf6;
+    --color-ai-600: #7c3aed;
+    --color-ai-700: #6d28d9;
+
+    /* Semantik sistem (BUKAN untuk menilai siswa) */
+    --color-success-50: #ecfdf5;
+    --color-success-600: #059669;
+    --color-success-700: #047857;
+    --color-warning-50: #fffbeb;
+    --color-warning-600: #d97706;
+    --color-warning-700: #b45309;
+    --color-danger-50: #fef2f2;
+    --color-danger-600: #dc2626;
+    --color-danger-700: #b91c1c;
+
+    /*
+     * Level — skala ordinal "pertumbuhan" (kuning → hijau → sian → indigo).
+     * Tanpa merah: level rendah = titik mulai, bukan kegagalan.
+     * solid: bar/chart (≥3:1 vs putih) · soft: latar badge · ink: teks badge (≥6:1)
+     */
+    --color-level-0: #d97706;
+    --color-level-0-soft: #fef3c7;
+    --color-level-0-ink: #92400e;
+    --color-level-1: #65a30d;
+    --color-level-1-soft: #ecfccb;
+    --color-level-1-ink: #3f6212;
+    --color-level-2: #059669;
+    --color-level-2-soft: #d1fae5;
+    --color-level-2-ink: #065f46;
+    --color-level-3: #0891b2;
+    --color-level-3-soft: #cffafe;
+    --color-level-3-ink: #155e75;
+    --color-level-4: #4f46e5;
+    --color-level-4-soft: #e0e7ff;
+    --color-level-4-ink: #3730a3;
+
+    /* Elevasi — lembut, tidak pernah hitam pekat */
+    --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.03);
+    --shadow-raised: 0 4px 12px -2px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.04);
+    --shadow-overlay: 0 24px 48px -12px rgb(15 23 42 / 0.18);
+
+    /* Gerak */
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+    --animate-fade-up: fade-up 0.35s var(--ease-out-soft) both;
+    --animate-shimmer: shimmer 1.6s linear infinite;
+
+    @keyframes fade-up {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shimmer {
+        from { background-position: -200% 0; }
+        to { background-position: 200% 0; }
+    }
 }
 
 @layer base {
     body {
-        @apply bg-canvas text-ink font-sans antialiased;
+        @apply bg-canvas font-sans text-ink antialiased;
+    }
+
+    h1, h2, h3, h4 {
+        @apply text-balance;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-brand-500;
     }
 
     [x-cloak] {
         display: none !important;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
 }
 
+/*
+|--------------------------------------------------------------------------
+| Utilitas dasar UI kit
+|--------------------------------------------------------------------------
+| Dipakai oleh komponen Blade di resources/views/components/ui. Di view,
+| utamakan komponen <x-ui.*>; utilitas ini untuk kasus yang tidak tercakup.
+*/
 @utility card {
-    @apply rounded-2xl border border-line bg-surface shadow-[0_1px_2px_rgba(15,23,42,0.04)];
+    @apply rounded-2xl border border-line bg-surface shadow-card;
 }
 
 @utility btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex items-center justify-center rounded-full font-medium whitespace-nowrap transition duration-150 select-none disabled:pointer-events-none disabled:opacity-50;
+}
+
+/* Ukuran: lg (48px) wajib untuk aksi utama di halaman siswa — target sentuh ≥44px. */
+@utility btn-sm {
+    @apply min-h-8 gap-1.5 px-3.5 text-xs;
+}
+
+@utility btn-md {
+    @apply min-h-10 gap-2 px-5 text-sm;
+}
+
+@utility btn-lg {
+    @apply min-h-12 gap-2 px-6 text-base;
 }
 
 @utility btn-primary {
-    @apply btn bg-brand-600 text-white hover:bg-brand-700;
+    @apply btn bg-brand-600 text-white shadow-card hover:bg-brand-700 active:scale-[0.98];
 }
 
 @utility btn-dark {
-    @apply btn bg-ink text-white hover:bg-slate-800;
+    @apply btn bg-ink text-white hover:bg-slate-800 active:scale-[0.98];
+}
+
+@utility btn-secondary {
+    @apply btn border border-line bg-surface text-ink shadow-card hover:border-field hover:bg-subtle;
 }
 
 @utility btn-ghost {
-    @apply btn border border-line bg-surface text-ink hover:bg-slate-50;
+    @apply btn text-ink-soft hover:bg-brand-50 hover:text-brand-700;
+}
+
+@utility btn-ai {
+    @apply btn bg-ai-600 text-white shadow-card hover:bg-ai-700 active:scale-[0.98];
+}
+
+@utility btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-700;
 }
 
 @utility input {
-    @apply w-full rounded-xl border border-line bg-surface px-4 py-2.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-100;
+    @apply block w-full rounded-xl border border-field bg-surface px-3.5 py-2.5 text-sm text-ink transition outline-none placeholder:text-placeholder focus:border-brand-500 focus:ring-4 focus:ring-brand-100 disabled:bg-subtle disabled:text-muted aria-invalid:border-danger-600 aria-invalid:focus:ring-danger-50;
 }
 
 @utility label {
     @apply mb-1.5 block text-sm font-medium text-ink;
 }
 
+@utility eyebrow {
+    @apply text-xs font-semibold tracking-[0.12em] text-muted uppercase;
+}
+
 @utility bg-aurora {
     background:
-        radial-gradient(60% 50% at 20% 0%, rgba(59, 108, 246, 0.18), transparent 70%),
-        radial-gradient(50% 40% at 85% 10%, rgba(139, 92, 246, 0.16), transparent 70%),
+        radial-gradient(60% 50% at 15% 0%, rgb(59 108 246 / 0.16), transparent 70%),
+        radial-gradient(50% 40% at 90% 5%, rgb(139 92 246 / 0.14), transparent 70%),
         var(--color-canvas);
+}
+
+/* Arsiran untuk status "belum ada data / belum mengerjakan" (ref: Donezo). */
+@utility bg-hatch {
+    background-image: repeating-linear-gradient(135deg, var(--color-line) 0 2px, transparent 2px 7px);
+}
+
+@utility skeleton {
+    @apply animate-shimmer rounded-lg bg-[linear-gradient(90deg,var(--color-subtle)_25%,var(--color-line)_50%,var(--color-subtle)_75%)] bg-[length:200%_100%];
 }
 
 @media print {
@@ -87,5 +216,9 @@
 
     body {
         background: #fff;
+    }
+
+    .card {
+        box-shadow: none;
     }
 }

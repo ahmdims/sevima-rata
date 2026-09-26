@@ -20,6 +20,8 @@ Route::get('/hasil/{attempt}', [AttemptController::class, 'result'])->name('sisw
 Route::prefix('guru')->name('guru.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::post('/kelas', [DashboardController::class, 'storeClassroom'])->name('kelas.store');
+    Route::get('/asesmen/buat', [AssessmentController::class, 'create'])->name('asesmen.create');
+    Route::post('/asesmen', [AssessmentController::class, 'store'])->name('asesmen.store');
     Route::get('/asesmen/{assessment}', [AssessmentController::class, 'show'])->name('asesmen.show');
     Route::post('/asesmen/{assessment}/publikasi', [AssessmentController::class, 'publish'])->name('asesmen.publish');
     Route::get('/asesmen/{assessment}/hasil', [AssessmentController::class, 'results'])->name('asesmen.hasil');

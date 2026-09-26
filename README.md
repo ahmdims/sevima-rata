@@ -18,7 +18,7 @@ Detail produk: [docs/PRD.md](docs/PRD.md) · Design system: [docs/DESIGN.md](doc
 | Backend | Laravel 12 (PHP 8.2+) |
 | Frontend | Blade, Tailwind CSS v4, Alpine.js (tanpa SPA, ringan untuk HP) |
 | Database | SQLite |
-| AI | Claude API (`claude-haiku-4-5-20251001`, bisa diganti lewat `LLM_MODEL`) |
+| AI | Claude API (`claude-haiku-4-5`, bisa diganti lewat `LLM_MODEL`) |
 
 ## Menjalankan Secara Lokal
 
@@ -52,7 +52,7 @@ php artisan serve
 | Variabel `.env` | Default | Keterangan |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | — | API key Claude. |
-| `LLM_MODEL` | `claude-haiku-4-5-20251001` | Model yang dipakai. |
+| `LLM_MODEL` | `claude-haiku-4-5` | Model yang dipakai. |
 | `LLM_FAKE` | `true` | `true` = memakai data contoh tanpa memanggil API, sehingga demo tetap jalan tanpa API key atau internet. |
 | `LLM_TIMEOUT` | `60` | Timeout request (detik). |
 | `LLM_MAX_RETRIES` | `2` | Jumlah retry jika output AI tidak lolos validasi skema. |

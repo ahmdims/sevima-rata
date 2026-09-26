@@ -11,7 +11,11 @@ class TeacherDashboardTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected $seed = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
+    }
 
     public function test_dashboard_lists_classrooms_and_assessments(): void
     {

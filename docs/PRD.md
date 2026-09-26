@@ -127,7 +127,7 @@ Prioritas: **P0** wajib ada untuk demo · **P1** sebaiknya ada · **P2** hanya j
 | Backend | **Laravel 11/12** (PHP 8.2, sudah ada di Laragon) | Scaffolding cepat, Eloquent, migration dan seeder. |
 | Frontend | **Blade + Tailwind CSS + Alpine.js** | Tanpa build SPA, ringan untuk HP murah, cepat dikerjakan sendirian. |
 | Database | **SQLite** | Nol konfigurasi, mudah dijalankan juri dari repo. |
-| AI | **Claude API** (`claude-haiku-4-5-20251001` untuk kecepatan, `claude-sonnet-5` bila perlu kualitas lebih) lewat HTTP client Laravel | Dukungan output JSON terstruktur dan Bahasa Indonesia yang baik. Model diatur lewat `.env` (`LLM_MODEL`). |
+| AI | **Claude API** (`claude-haiku-4-5` untuk kecepatan, `claude-sonnet-5` bila perlu kualitas lebih) lewat SDK resmi `anthropic-ai/sdk` | Dukungan output JSON terstruktur dan Bahasa Indonesia yang baik. Model diatur lewat `.env` (`LLM_MODEL`). |
 | Chart | Bar chart CSS murni atau Chart.js via CDN | Cukup untuk distribusi level. |
 
 ## 10. Model Data

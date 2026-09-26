@@ -162,7 +162,7 @@
 }
 
 @utility btn-dark {
-    @apply btn bg-ink text-white hover:bg-slate-800 active:scale-[0.98];
+    @apply btn bg-ink text-white hover:bg-ink-soft active:scale-[0.98];
 }
 
 @utility btn-secondary {

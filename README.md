@@ -11,6 +11,27 @@ RATA membantu guru menjalankan **asesmen diagnostik → pengelompokan siswa per 
 
 Detail produk: [docs/PRD.md](docs/PRD.md) · Design system: [docs/DESIGN.md](docs/DESIGN.md) (contoh hidup di `/ui-kit`) · Proses pemilihan ide: [docs/BRAINSTORMING.md](docs/BRAINSTORMING.md)
 
+## Fitur
+
+| Untuk | Fitur |
+|---|---|
+| Guru | Buat kelas (kode otomatis) · **Buat asesmen dengan AI** dari topik · tinjau soal, kunci, dan miskonsepsi · publikasikan |
+| Guru | **Dashboard hasil**: KPI, distribusi level, miskonsepsi terbanyak, kelompok belajar per level |
+| Guru | **Materi per kelompok buatan AI**: konsep, contoh, 3 latihan bertahap, tips mengajar · bisa dicetak / dibuat ulang |
+| Siswa | Masuk dengan kode kelas + nama panggilan (tanpa akun) · satu soal per layar · hasil tanpa skor, dengan umpan balik AI yang menyemangati |
+| Sistem | Penilaian level **deterministik** · validasi skema output AI + retry · **mode demo tanpa API key** (`LLM_FAKE=true`) |
+
+## Alur Demo (±3 menit)
+
+1. `composer run setup` lalu `composer run dev` → buka http://localhost:8000.
+2. **Guru** → `/guru`: data demo *Kelas 5A* (kode **RATA5A**) sudah berisi 12 siswa. Klik **Lihat hasil** untuk melihat dashboard kelompok.
+3. Di kartu kelompok, klik **Buat materi kelompok** → materi berdiferensiasi muncul.
+4. **Buat Asesmen** → isi topik → AI menyusun 12 soal 4 level (atau soal contoh bila mode demo).
+5. **Siswa** → `/join` (buka di HP / mode responsif), kode `RATA5A` + nama → kerjakan 12 soal → halaman hasil.
+6. Kembali ke dashboard guru → klik **Perbarui**: siswa baru langsung masuk kelompoknya.
+
+Design system dan contoh semua komponen ada di `/ui-kit`.
+
 ## Tech Stack
 
 | Lapisan | Teknologi |

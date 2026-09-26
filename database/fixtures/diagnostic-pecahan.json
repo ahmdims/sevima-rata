@@ -1,0 +1,148 @@
+{
+    "levels": [
+        {
+            "level": 1,
+            "label": "Mengenali pecahan dari gambar",
+            "questions": [
+                {
+                    "stem": "Sebuah pizza dipotong menjadi 4 bagian sama besar. Doni makan 1 potong. Pecahan pizza yang dimakan Doni adalah …",
+                    "options": [
+                        {"key": "A", "text": "1/4", "misconception": null},
+                        {"key": "B", "text": "4/1", "misconception": "Tertukar posisi pembilang dan penyebut"},
+                        {"key": "C", "text": "1/3", "misconception": "Membandingkan bagian diambil dengan sisa, bukan dengan keseluruhan"}
+                    ],
+                    "answer_key": "A",
+                    "explanation": "Pizza dibagi 4 (penyebut), yang dimakan 1 (pembilang), jadi 1/4."
+                },
+                {
+                    "stem": "Sebuah persegi panjang dibagi menjadi 6 bagian sama besar, 2 bagian diwarnai. Pecahan bagian yang diwarnai adalah …",
+                    "options": [
+                        {"key": "A", "text": "2/4", "misconception": "Membandingkan bagian diambil dengan sisa, bukan dengan keseluruhan"},
+                        {"key": "B", "text": "2/6", "misconception": null},
+                        {"key": "C", "text": "6/2", "misconception": "Tertukar posisi pembilang dan penyebut"}
+                    ],
+                    "answer_key": "B",
+                    "explanation": "Ada 6 bagian seluruhnya dan 2 yang diwarnai, jadi 2/6."
+                },
+                {
+                    "stem": "Pada pecahan 3/5, angka 5 menunjukkan …",
+                    "options": [
+                        {"key": "A", "text": "Banyak bagian yang diambil", "misconception": "Tertukar posisi pembilang dan penyebut"},
+                        {"key": "B", "text": "Banyak seluruh bagian yang sama besar", "misconception": null},
+                        {"key": "C", "text": "Sisa bagian yang tidak diambil", "misconception": "Membandingkan bagian diambil dengan sisa, bukan dengan keseluruhan"}
+                    ],
+                    "answer_key": "B",
+                    "explanation": "Penyebut (angka bawah) menunjukkan banyak seluruh bagian yang sama besar."
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "label": "Membandingkan pecahan",
+            "questions": [
+                {
+                    "stem": "Manakah yang lebih besar: 1/3 atau 1/5?",
+                    "options": [
+                        {"key": "A", "text": "1/5, karena 5 lebih besar dari 3", "misconception": "Menganggap penyebut lebih besar berarti pecahan lebih besar"},
+                        {"key": "B", "text": "1/3", "misconception": null},
+                        {"key": "C", "text": "Sama besar, karena pembilangnya sama-sama 1", "misconception": "Hanya melihat pembilang saat membandingkan"}
+                    ],
+                    "answer_key": "B",
+                    "explanation": "Semakin sedikit potongan, semakin besar tiap potongannya. 1/3 lebih besar dari 1/5."
+                },
+                {
+                    "stem": "Pecahan yang nilainya sama dengan 1/2 adalah …",
+                    "options": [
+                        {"key": "A", "text": "2/4", "misconception": null},
+                        {"key": "B", "text": "1/4", "misconception": "Menganggap pecahan senilai cukup dengan mengubah penyebut saja"},
+                        {"key": "C", "text": "2/3", "misconception": "Menambahkan angka yang sama ke pembilang dan penyebut untuk membuat pecahan senilai"}
+                    ],
+                    "answer_key": "A",
+                    "explanation": "1/2 = (1×2)/(2×2) = 2/4. Pembilang dan penyebut dikali bilangan yang sama."
+                },
+                {
+                    "stem": "Urutan pecahan dari yang terkecil: 3/4, 1/4, 2/4 adalah …",
+                    "options": [
+                        {"key": "A", "text": "3/4, 2/4, 1/4", "misconception": "Terbalik arah mengurutkan (terbesar ke terkecil)"},
+                        {"key": "B", "text": "1/4, 2/4, 3/4", "misconception": null},
+                        {"key": "C", "text": "2/4, 1/4, 3/4", "misconception": "Hanya melihat pembilang saat membandingkan"}
+                    ],
+                    "answer_key": "B",
+                    "explanation": "Penyebutnya sama (4), jadi cukup bandingkan pembilangnya: 1 < 2 < 3."
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "label": "Menjumlah pecahan berpenyebut sama",
+            "questions": [
+                {
+                    "stem": "1/5 + 2/5 = …",
+                    "options": [
+                        {"key": "A", "text": "3/10", "misconception": "Menjumlahkan pembilang dengan pembilang dan penyebut dengan penyebut"},
+                        {"key": "B", "text": "3/5", "misconception": null},
+                        {"key": "C", "text": "2/5", "misconception": "Mengalikan pembilang saat seharusnya menjumlah"}
+                    ],
+                    "answer_key": "B",
+                    "explanation": "Penyebut sama, jadi jumlahkan pembilangnya saja: 1 + 2 = 3, hasilnya 3/5."
+                },
+                {
+                    "stem": "Ibu memakai 2/8 kg gula pagi hari dan 3/8 kg sore hari. Berapa kg gula yang dipakai seluruhnya?",
+                    "options": [
+                        {"key": "A", "text": "5/16 kg", "misconception": "Menjumlahkan pembilang dengan pembilang dan penyebut dengan penyebut"},
+                        {"key": "B", "text": "1/8 kg", "misconception": "Mengurangkan saat soal meminta penjumlahan"},
+                        {"key": "C", "text": "5/8 kg", "misconception": null}
+                    ],
+                    "answer_key": "C",
+                    "explanation": "2/8 + 3/8 = 5/8 kg."
+                },
+                {
+                    "stem": "3/7 + 3/7 = …",
+                    "options": [
+                        {"key": "A", "text": "6/7", "misconception": null},
+                        {"key": "B", "text": "6/14", "misconception": "Menjumlahkan pembilang dengan pembilang dan penyebut dengan penyebut"},
+                        {"key": "C", "text": "9/7", "misconception": "Mengalikan pembilang saat seharusnya menjumlah"}
+                    ],
+                    "answer_key": "A",
+                    "explanation": "3 + 3 = 6, penyebut tetap 7, jadi 6/7."
+                }
+            ]
+        },
+        {
+            "level": 4,
+            "label": "Menjumlah pecahan berpenyebut beda & soal cerita",
+            "questions": [
+                {
+                    "stem": "1/2 + 1/3 = …",
+                    "options": [
+                        {"key": "A", "text": "2/5", "misconception": "Menjumlahkan pembilang dengan pembilang dan penyebut dengan penyebut"},
+                        {"key": "B", "text": "5/6", "misconception": null},
+                        {"key": "C", "text": "2/6", "misconception": "Menyamakan penyebut tanpa mengubah pembilang"}
+                    ],
+                    "answer_key": "B",
+                    "explanation": "Samakan penyebut menjadi 6: 3/6 + 2/6 = 5/6."
+                },
+                {
+                    "stem": "Rina membaca 1/4 buku pada hari Senin dan 1/2 buku pada hari Selasa. Berapa bagian buku yang sudah dibaca?",
+                    "options": [
+                        {"key": "A", "text": "2/6", "misconception": "Menjumlahkan pembilang dengan pembilang dan penyebut dengan penyebut"},
+                        {"key": "B", "text": "2/4", "misconception": "Menyamakan penyebut tanpa mengubah pembilang"},
+                        {"key": "C", "text": "3/4", "misconception": null}
+                    ],
+                    "answer_key": "C",
+                    "explanation": "1/2 = 2/4, jadi 1/4 + 2/4 = 3/4 buku."
+                },
+                {
+                    "stem": "2/3 + 1/6 = …",
+                    "options": [
+                        {"key": "A", "text": "5/6", "misconception": null},
+                        {"key": "B", "text": "3/9", "misconception": "Menjumlahkan pembilang dengan pembilang dan penyebut dengan penyebut"},
+                        {"key": "C", "text": "3/6", "misconception": "Menyamakan penyebut tanpa mengubah pembilang"}
+                    ],
+                    "answer_key": "A",
+                    "explanation": "2/3 = 4/6, jadi 4/6 + 1/6 = 5/6."
+                }
+            ]
+        }
+    ]
+}
